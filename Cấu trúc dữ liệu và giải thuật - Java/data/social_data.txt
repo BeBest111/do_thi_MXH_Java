@@ -1,0 +1,29 @@
+# SOCIAL_NETWORK_USERS
+USER|U01|Nguyễn Minh Tiến|22|Nam|CNTT|Hà Nội|Lập trình;AI;Bóng đá
+USER|U02|Đồng Duy Phúc|22|Nam|CNTT|Hải Phòng|Lập trình;Đồ thị;Âm nhạc
+USER|U03|Trần Thu Hà|21|Nữ|ATTT|Bắc Ninh|Bảo mật;Đọc sách;Nhiếp ảnh
+USER|U04|Lê Hoàng Long|22|Nam|DTVT|Nam Định|Điện tử;Bóng rổ;Game
+USER|U05|Phạm Hải Đăng|23|Nam|CNTT|Hà Nam|Web Fullstack;Cầu lông;Lập trình
+USER|U06|Vũ Mai Phương|21|Nữ|Marketing|Hà Nội|Content;Du lịch;Nhiếp ảnh
+USER|U07|Đỗ Quang Huy|22|Nam|ATTT|Thái Bình|Mạng máy tính;Gym;Bóng đá
+USER|U08|Ngô Quỳnh Chi|20|Nữ|CNTT|Quảng Ninh|UI/UX;Vẽ;Đọc sách
+USER|U09|Bùi Quốc Anh|22|Nam|DTVT|Nghệ An|IoT;Robotics;Bóng rổ
+USER|U10|Hoàng Kim Yến|21|Nữ|Kế toán|Phú Thọ|Tài chính;Nấu ăn;Du lịch
+USER|U11|Đặng Văn Nam|23|Nam|QTKD|Thanh Hóa|Kinh doanh;Bơi lội
+USER|U12|Lê Thúy Nga|22|Nữ|QTKD|Hải Dương|Khởi nghiệp;Yoga
+# SOCIAL_NETWORK_FRIENDSHIPS
+FRIEND|U01|U02
+FRIEND|U01|U03
+FRIEND|U01|U05
+FRIEND|U02|U03
+FRIEND|U02|U04
+FRIEND|U03|U06
+FRIEND|U03|U07
+FRIEND|U04|U07
+FRIEND|U04|U09
+FRIEND|U05|U08
+FRIEND|U06|U08
+FRIEND|U06|U10
+FRIEND|U07|U08
+FRIEND|U08|U10
+FRIEND|U11|U12

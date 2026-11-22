@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SocialGraph PTIT – Phân tích mạng xã hội bằng đồ thị</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">◉</div>
+      <div>
+        <h1>SocialGraph <span>PTIT</span></h1>
+        <p>Phân tích mạng xã hội bằng đồ thị · BFS · DFS · Shortest Path</p>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main class="layout">
+    <!-- ============ Bảng điều khiển ============ -->
+    <aside class="panel controls">
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="mutual">Bạn chung</button>
+        <button class="tab" data-tab="recommend">Gợi ý</button>
+        <button class="tab" data-tab="path">Đường ngắn nhất</button>
+        <button class="tab" data-tab="manage">Quản lý</button>
+      </nav>
+
+      <section class="tabpane active" id="pane-mutual">
+        <h3>Xem bạn bè chung</h3>
+        <label>Người thứ nhất<select id="mutualA"></select></label>
+        <label>Người thứ hai<select id="mutualB"></select></label>
+        <button class="btn primary" id="btnMutual">Tìm bạn chung</button>
+      </section>
+
+      <section class="tabpane" id="pane-recommend">
+        <h3>Gợi ý bạn mới</h3>
+        <label>Người dùng<select id="recUser"></select></label>
+        <div class="seg" id="algoSeg">
+          <button class="active" data-algo="bfs">BFS · Bạn của bạn</button>
+          <button data-algo="dfs">DFS · Khám phá sâu</button>
+        </div>
+        <label id="depthRow" class="hidden">Độ sâu tối đa DFS: <b id="depthVal">3</b>
+          <input type="range" id="recDepth" min="2" max="6" value="3">
+        </label>
+        <label>Số gợi ý tối đa: <b id="limitVal">5</b>
+          <input type="range" id="recLimit" min="1" max="12" value="5">
+        </label>
+        <button class="btn primary" id="btnRecommend">Gợi ý kết bạn</button>
+      </section>
+
+      <section class="tabpane" id="pane-path">
+        <h3>Đường kết nối ngắn nhất</h3>
+        <label>Từ<select id="pathFrom"></select></label>
+        <label>Đến<select id="pathTo"></select></label>
+        <button class="btn primary" id="btnPath">Tìm đường (BFS)</button>
+      </section>
+
+      <section class="tabpane" id="pane-manage">
+        <h3>Thêm người dùng</h3>
+        <div class="grid2">
+          <input id="newName" placeholder="Họ tên *">
+          <input id="newAge" type="number" placeholder="Tuổi" min="1" max="120">
+          <select id="newGender"><option>Nam</option><option>Nữ</option><option>Khác</option></select>
+          <input id="newMajor" placeholder="Ngành (CNTT…)">
+          <input id="newHometown" placeholder="Quê quán">
+          <input id="newHobbies" placeholder="Sở thích, cách nhau dấu phẩy">
+        </div>
+        <button class="btn" id="btnAddUser">+ Thêm người dùng</button>
+
+        <h3>Kết bạn / Hủy kết bạn</h3>
+        <label>Người A<select id="friendA"></select></label>
+        <label>Người B<select id="friendB"></select></label>
+        <div class="row">
+          <button class="btn primary" id="btnAddFriend">Kết bạn</button>
+          <button class="btn danger" id="btnRemoveFriend">Hủy kết bạn</button>
+        </div>
+
+        <h3>Khác</h3>
+        <div class="row">
+          <button class="btn danger" id="btnDeleteUser">Xóa người A</button>
+          <button class="btn" id="btnReset">Nạp lại dữ liệu mẫu</button>
+        </div>
+      </section>
+    </aside>
+
+    <!-- ============ Đồ thị ============ -->
+    <section class="panel stage">
+      <div class="stage-head">
+        <h2>Đồ thị mạng xã hội</h2>
+        <div class="legend">
+          <span><i class="dot sel"></i>Đã chọn</span>
+          <span><i class="dot hl"></i>Kết quả</span>
+          <span><i class="dot rec"></i>Gợi ý</span>
+          <button class="btn small" id="btnClear">Bỏ làm nổi bật</button>
+        </div>
+      </div>
+      <svg id="graph" role="img" aria-label="Đồ thị mạng xã hội"></svg>
+      <div id="tooltip" class="tooltip hidden"></div>
+      <p class="hint">Kéo thả nút để sắp xếp · Nhấp vào nút để chọn người dùng</p>
+    </section>
+
+    <!-- ============ Kết quả ============ -->
+    <aside class="panel results">
+      <h2>Kết quả</h2>
+      <div id="result" class="result-body">
+        <p class="muted">Chọn một chức năng ở bên trái để xem kết quả phân tích.</p>
+      </div>
+      <h2 class="mt">Top ảnh hưởng</h2>
+      <ol id="influencers" class="infl"></ol>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
